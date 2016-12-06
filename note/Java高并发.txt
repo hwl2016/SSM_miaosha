@@ -1,29 +1,67 @@
-MySQL
-	表设计
-	SQL技巧
-	事物和行级锁
-
-MyBatis
-	DAO层设计和开发
-	MyBatis合理使用
-	MyBatis和Spring整合
-
-Spring
-	Spring IOC整合Service
-	声明式事物运用
-
-SpringMVC
-	Restful接口设计和使用
-	框架运作流程
-	Controller开发技巧
-
-前端
-	交互设计
-	jQuery
-	Bootstrap
-
-高并发
-	高并发点和高并发分析
-	优化思路并实现
-
-基于Maven创建项目
+一、技术架构
+		MySQL
+			表设计
+			SQL技巧
+			事物和行级锁
+		
+		MyBatis
+			DAO层设计和开发
+			MyBatis合理使用
+			MyBatis和Spring整合
+		
+		Spring
+			Spring IOC整合Service
+			声明式事物运用
+		
+		SpringMVC
+			Restful接口设计和使用
+			框架运作流程
+			Controller开发技巧
+		
+		前端
+			交互设计
+			jQuery
+			Bootstrap
+		
+		高并发
+			高并发点和高并发分析
+			优化思路并实现
+		
+		基于Maven创建项目
+		
+二、秒杀业务分析
+		1、秒杀业务的核心：库存的处理		
+		2、用户的购买行为：谁购买成功了，成功时间/有效期，付款/发货信息
+		3、秒杀的难点：
+			1)、竞争 ====>  事物&行级锁
+					事物： a、Start Transaction
+								b、Update 库存数量
+								c、Insert 购买明细
+								d、Commit
+					行级锁：事物等待
+					
+			2)、如何高效的处理竞争？解决高并发
+			
+		4、我们要实现那些秒杀功能
+			1）秒杀接口暴露：防止浏览器插件自动刷屏
+			2）执行秒杀
+			3）相关查询：列表查询、详情页查询等
+			
+		5、代码开发阶段
+			1）DAO设计编码：表设计、DAO接口、MyBatis如何实现DAO
+			2）Service设计编码：Service接口设计、编码实现、Spring管理Service、声明式事物管理
+			3）Web设计编码：Restful接口、前端交互等
+								
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
