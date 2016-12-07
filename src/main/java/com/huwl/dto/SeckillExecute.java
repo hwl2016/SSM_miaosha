@@ -1,6 +1,7 @@
 package com.huwl.dto;
 
 import com.huwl.entity.SuccessKilled;
+import com.huwl.enums.SeckillStatEnum;
 
 /**
  * 封装秒杀执行后结果
@@ -17,20 +18,20 @@ public class SeckillExecute {
 	//秒杀成功对象
 	private SuccessKilled successKilled;
 	
-	public SeckillExecute(long seckillId, int state, String stateInfo,
+	public SeckillExecute(long seckillId, SeckillStatEnum statEnum,
 			SuccessKilled successKilled) {
 		super();
 		this.seckillId = seckillId;
-		this.state = state;
-		this.stateInfo = stateInfo;
+		this.state = statEnum.getState();
+		this.stateInfo = statEnum.getStateInfo();
 		this.successKilled = successKilled;
 	}
 	
-	public SeckillExecute(long seckillId, int state, String stateInfo) {
+	public SeckillExecute(long seckillId, SeckillStatEnum statEnum) {
 		super();
 		this.seckillId = seckillId;
-		this.state = state;
-		this.stateInfo = stateInfo;
+		this.state = statEnum.getState();
+		this.stateInfo = statEnum.getStateInfo();
 	}
 	
 	public long getSeckillId() {
@@ -57,4 +58,13 @@ public class SeckillExecute {
 	public void setSuccessKilled(SuccessKilled successKilled) {
 		this.successKilled = successKilled;
 	}
+
+	@Override
+	public String toString() {
+		return "SeckillExecute [seckillId=" + seckillId + ", state=" + state
+				+ ", stateInfo=" + stateInfo + ", successKilled="
+				+ successKilled + "]";
+	}
+	
+	
 }
