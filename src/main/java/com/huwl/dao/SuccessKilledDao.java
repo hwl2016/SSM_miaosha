@@ -7,7 +7,7 @@ import com.huwl.entity.SuccessKilled;
 public interface SuccessKilledDao {
 	
 	/**
-	 * 插入购买明细 表中使用了联合主键可多虑重复  
+	 * 插入购买明细 表中使用了联合主键可过滤重复  
 	 * @param seckillId
 	 * @param userPhone
 	 * @return	插入的行数

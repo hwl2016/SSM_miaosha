@@ -52,10 +52,51 @@
 			2）Service设计编码：Service接口设计、编码实现、Spring管理Service、声明式事物管理
 			3）Web设计编码：Restful接口、前端交互等
 								
+三、DAO接口设计、mybatis的sql实现DAO 和mybatis集成spring		
+
+四、Service层接口设计和实现
+		Spring声明式事物回滚时间 运行期异常时进行回滚 所以要小心try catch
 		
-Spring声明式事物回滚时间 运行期异常时进行回滚 所以要小心try catch
-		
-		
+五、web层实现
+		1、前端交互流程设计（参看 img/3  img/4)
+		2、Restful
+				什么是Restful？ 兴起于Ruby的Rails，是一种优雅的URI表述方式。
+				意义在于能够反映出资源的状态和状态转移
+				Restful的规范：
+					GET：查询操作
+					POST：添加/修改操作  非密等操作
+					PUT：修改操作		密等操作
+					DELETE：删除操作
+				
+				URL设计	
+						/模块/资源/{标识}/集合1/...   
+						例如： /user/{uid}/friends   好友列表
+									/user/{uid}/followers   关注着列表
+									
+				秒杀API的URL设计
+						GET   /seckill/list   秒杀列表
+						GET   /seckill/{id}/detail   秒杀详情页
+						GET   /seckill/time/now   系统时间
+						POST   /seckill/{id}/exposer   暴露秒杀
+						POST   /seckill/{id}/{md5}/execution   执行秒杀
+						
+		3、SpringMVC
+				1、SpringMVC运行流程 （参看img/5）
+				2、Http请求地址映射原理 （参看img/6）
+				3、注解映射技巧 （参看img/7）
+						@RequestMapping注解
+								1）支持标准的额URL
+								2）支持Ant风格URL  （即?  *  ** 等字符。    ?  匹配一个字符    *  匹配任意字符    **  匹配任意的URL路径）
+								3）带{XXX}占位符的URL
+				4、请求方法细节处理
+						1）、请求参数绑定
+						2）、请求方式限制
+						3）、请求转发和重定向
+						4）、数据模型赋值
+						5）、返回json数据
+						6）、cookie访问
+						
+		4、bootstrap + jQuery
 		
 		
 		

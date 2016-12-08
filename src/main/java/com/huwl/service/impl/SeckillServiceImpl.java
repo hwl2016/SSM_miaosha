@@ -66,22 +66,21 @@ public class SeckillServiceImpl implements SeckillService {
 	 * 3、不是所有的方法都需要事物 如只有一条修改操作，只读操作不需要事物控制
 	 */
 	@Transactional
-	public SeckillExecute executeSeckill(long seckillId, long userPhone,
-			String md5) throws SeckillException, RepeatKillException,
-			SeckillCloseException {
+	public SeckillExecute executeSeckill(long seckillId, long userPhone, String md5) 
+			throws SeckillException, RepeatKillException, SeckillCloseException {
 		if (md5 == null || !md5.equals(getMD5(seckillId))) {
-			throw new SeckillException("seckill data rewrite!");
+			throw new SeckillException("秒杀数据被重写！");
 		}
 		//执行秒杀业务逻辑：减库存 + 记录购买行为
 		Date nowTime = new Date();
 		try {
 			int updateCount = seckillDao.reduceNumber(seckillId, nowTime);	//减库存
 			if (updateCount <= 0) {		//没有更新到记录，秒杀结束
-				throw new SeckillCloseException("seckill is close");
+				throw new SeckillCloseException("秒杀被关闭（库存不足或者超出秒杀时间）");
 			}else {
 				// 记录购买行为
 				int insertCount = successKilledDao.insertSuccessKilled(seckillId, userPhone);
-				//唯一：seckillId, userPhone
+				//联合主键确保唯一：seckillId, userPhone
 				if (insertCount <= 0) {
 					throw new RepeatKillException("重复秒杀");
 				}else {
