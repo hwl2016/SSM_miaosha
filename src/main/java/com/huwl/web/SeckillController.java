@@ -82,21 +82,25 @@ public class SeckillController {
 		}
 		
 		try {
-			SeckillExecute execution = seckillService.executeSeckill(seckillId, userPhone, md5);
+//			SeckillExecute execution = seckillService.executeSeckill(seckillId, userPhone, md5);
+			
+			//通过存储过程执行秒杀
+			SeckillExecute execution = seckillService.executeSeckillByProcedure(seckillId, userPhone, md5);
 			return new SeckillResult<SeckillExecute>(true, execution);
 		} catch (RepeatKillException e) {
 			SeckillExecute execution = new SeckillExecute(seckillId, SeckillStatEnum.REPEAT_KILL);
-			return new SeckillResult<SeckillExecute>(false, execution);
+			return new SeckillResult<SeckillExecute>(true, execution);
 		} catch (SeckillCloseException e) {
 			SeckillExecute execution = new SeckillExecute(seckillId, SeckillStatEnum.END);
-			return new SeckillResult<SeckillExecute>(false, execution);
+			return new SeckillResult<SeckillExecute>(true, execution);
 		} catch (SeckillException e) {
 			SeckillExecute execution = new SeckillExecute(seckillId, SeckillStatEnum.INNER_ERROR);
-			return new SeckillResult<SeckillExecute>(false, execution);
+			return new SeckillResult<SeckillExecute>(true, execution);
 		}
 	}
 	
 	@RequestMapping(value="/time/now", method=RequestMethod.GET)
+	@ResponseBody
 	public SeckillResult<Long> time() {
 		Date now = new Date();
 		return new SeckillResult<Long>(true, now.getTime());

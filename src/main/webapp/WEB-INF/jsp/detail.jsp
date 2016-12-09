@@ -34,26 +34,26 @@
 	        <div class="row">
 	        	<div class="col-xs-8 col-xs-offset-2">
 	        		<input type="text" name="killPhone" id="killPhoneKey" placeholder="请输入手机号" class="form-control"/>
-	      			<span id="killPhoneMessage" class="glyphicon"></span>
 	        	</div>
 	        </div>
 	      </div>
 	      <div class="modal-footer">
+      		<span id="killPhoneMessage" class="glyphicon"></span>
 	        <button id="killPhoneBtn" class="btn btn-success">
 	        	<span class="glyphicon glyphicon-phone"></span> Submit
 	        </button>
-	        <button id="killPhoneBtn" class="btn btn-danger" data-dismiss="modal">
+	        <!-- <button id="killPhoneBtn" class="btn btn-danger" data-dismiss="modal">
 	        	<span class="glyphicon glyphicon-remove"></span> Cancel
-	        </button>
+	        </button> -->
 	      </div>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 	
     <script src="${ctx}/static/js/jQuery-2.1.4.min.js"></script>
-    <script src="${ctx}/static/bootstrap/js/bootstrap.min.js"></script>
     <script src="${ctx}/static/js/jquery.cookie.js"></script>
-    <script src="http://cdn.bootcss.com/jquery-countdown/2.0.0/jquery.countdown.min.js"></script>
+    <script src="${ctx}/static/js/jquery.countdown.min.js"></script>
+    <script src="${ctx}/static/bootstrap/js/bootstrap.min.js"></script>
     <script src="${ctx}/static/js/seckill.js"> </script>
     <script>
     	$(function() {

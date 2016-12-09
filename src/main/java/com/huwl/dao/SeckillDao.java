@@ -2,6 +2,7 @@ package com.huwl.dao;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -34,6 +35,10 @@ public interface SeckillDao {
 	// 这是java语言本身没有保存形参记录引起的
 	List<Seckill> queryAll(@Param("offset") int offset, @Param("limit") int limit);
 	
-	
+	/**
+	 * 使用存储过程进行秒杀
+	 * @param paramMap
+	 */
+	void killByProcedure(Map<String, Object> paramMap);
 	
 }

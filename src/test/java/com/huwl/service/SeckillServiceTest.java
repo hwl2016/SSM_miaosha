@@ -42,7 +42,7 @@ public class SeckillServiceTest {
 	
 	@Test
 	public void testExportSeckillUrl() {
-		long id = 1000;
+		long id = 1001;
 		Exposer exposer = seckillService.exportSeckillUrl(id);
 		logger.info("exposer={}", exposer);
 	}
@@ -89,6 +89,21 @@ public class SeckillServiceTest {
 			logger.warn("exposer={}", exposer);
 		}
 		
+	}
+	
+	/**
+	 * 测试存储过程
+	 */
+	@Test
+	public void testByProcedure() {
+		long id = 1000;
+		long phone = 15200001111L;
+		Exposer exposer = seckillService.exportSeckillUrl(id);
+		if(exposer.isExposed()) {
+			String md5 = exposer.getMd5();
+			SeckillExecute se = seckillService.executeSeckillByProcedure(id, phone, md5);
+			logger.info("result={}", se.getStateInfo());
+		}
 	}
 
 }

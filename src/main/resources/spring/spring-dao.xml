@@ -51,6 +51,10 @@
 		<property name="basePackage" value="com.huwl.dao" />
 	</bean>
 	
-	
+	<!-- RedisDao -->
+	<bean id="redisDao" class="com.huwl.dao.cache.RedisDao">
+		<constructor-arg index="0" value="localhost"></constructor-arg>
+		<constructor-arg index="1" value="6379"></constructor-arg>
+	</bean>
 	
 </beans>

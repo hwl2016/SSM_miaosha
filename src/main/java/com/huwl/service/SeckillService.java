@@ -51,4 +51,16 @@ public interface SeckillService {
 	SeckillExecute executeSeckill(long seckillId, long userPhone, String md5) 
 			throws SeckillException, RepeatKillException, SeckillCloseException;
 	
+	/**
+	 * 执行秒杀操作 by 存储过程
+	 * @param seckillId
+	 * @param userPhone
+	 * @param md5	从Exposer中获取md5 然后通过算法来进行比对前后是否一致，从而判断url地址是否被篡改
+	 * @return
+	 * @throws SeckillException	秒杀业务异常
+	 * @throws RepeatKillException	重复秒杀异常
+	 * @throws SeckillCloseException	秒杀关闭异常
+	 */
+	SeckillExecute executeSeckillByProcedure(long seckillId, long userPhone, String md5);
+	
 }
